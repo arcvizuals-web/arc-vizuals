@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARC VIZUALS — Cinematic Visual Storytelling</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8CC7A;
+    --gold-pale: #F5E8C0;
+    --dark: #0A0A0A;
+    --dark-2: #111111;
+    --dark-3: #1A1A1A;
+    --dark-4: #222222;
+    --dark-5: #2A2A2A;
+    --text-primary: #F0EDE6;
+    --text-secondary: #A09888;
+    --text-muted: #5A5248;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span {
+    color: var(--text-primary);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-left: 0.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--dark) !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .hero-title .arc {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 4rem;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: 1px solid var(--gold);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid rgba(240,237,230,0.2);
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* SECTION STYLES */
+  section { padding: 6rem 4rem; }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-desc {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 560px;
+  }
+
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.5rem 0;
+    opacity: 0.5;
+  }
+
+  /* SERVICES OVERVIEW */
+  .services-overview {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .service-tile {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    cursor: pointer;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .service-tile::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .service-tile:hover::before { transform: scaleX(1); }
+
+  .service-tile:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .service-tile:last-child { border-right: none; }
+
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-tile-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-tile-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* PACKAGES */
+  .packages-section { background: var(--dark); }
+
+  .packages-section .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .niche-tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    flex-wrap: wrap;
+  }
+
+  .niche-tab {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.3s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+  }
+
+  .niche-tab.active, .niche-tab:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .niche-panel { display: none; }
+  .niche-panel.active { display: block; }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .package-card {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.4s;
+    overflow: hidden;
+  }
+
+  .package-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .package-card:hover::after { opacity: 1; }
+  .package-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: var(--dark-4);
+    transform: translateY(-4px);
+  }
+
+  .package-card.featured {
+    border-color: rgba(201,168,76,0.4);
+    background: var(--dark-4);
+  }
+
+  .package-card.featured::after { opacity: 1; }
+
+  .package-badge {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    padding: 0.3rem 0.75rem;
+  }
+
+  .package-emoji {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .package-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .package-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .package-price sup {
+    font-size: 1.2rem;
+    vertical-align: top;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+
+  .package-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(201,168,76,0.3);
+    margin-bottom: 1.5rem;
+  }
+
+  .package-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .package-features li {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .package-features li::before {
+    content: '—';
+    color: var(--gold);
+    opacity: 0.6;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .package-btn {
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    transition: all 0.3s;
+  }
+
+  .package-btn:hover, .package-card.featured .package-btn {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+  }
+
+  /* ABOUT / WHY US */
+  .about-section {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-features {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .about-feature {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .about-feature-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .about-feature-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .about-feature-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-visual-main {
+    background: var(--dark-4);
+    border: 1px solid rgba(201,168,76,0.15);
+    aspect-ratio: 3/4;
+    max-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-visual-decor {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 2;
+  }
+
+  .about-visual-decor-2 {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 2;
+  }
+
+  .film-frame {
+    width: 85%;
+    height: 85%;
+    border: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .film-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .film-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 0 1.5rem;
+    line-height: 1.5;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--dark);
+    text-align: center;
+  }
+
+  .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    text-align: left;
+  }
+
+  .testimonial-card {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .testimonial-role {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* COVERAGE AREA */
+  .coverage {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    text-align: center;
+  }
+
+  .coverage-inner { max-width: 900px; margin: 0 auto; }
+
+  .counties {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2.5rem 0;
+  }
+
+  .county-tag {
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+  }
+
+  .county-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .travel-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--dark);
+    text-align: center;
+    padding: 8rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold); }
+
+  .cta-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 3rem 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 240px;
+  }
+
+  .footer-col-title {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2.5rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-note {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  /* CONTACT FORM */
+  .contact-section {
+    background: var(--dark-3);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: var(--dark-4);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-select option { background: var(--dark-4); }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  .contact-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .contact-item-icon {
+    font-size: 1rem;
+    color: var(--gold);
+    margin-top: 0.1rem;
+  }
+
+  .contact-item-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-item-value {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .hero-eyebrow { animation: fadeIn 1s ease 0.2s both; }
+  .hero-title { animation: fadeUp 1s ease 0.4s both; }
+  .hero-subtitle { animation: fadeUp 1s ease 0.6s both; }
+  .hero-actions { animation: fadeUp 1s ease 0.8s both; }
+  .hero-stats { animation: fadeUp 1s ease 1s both; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-section { padding: 5rem 1.5rem; }
+    .hero-stats { gap: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">ARC<span>Vizuals</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-eyebrow">Cinematic Visual Storytelling</div>
+
+  <h1 class="hero-title">
+    <span class="arc">ARC</span><br>VIZUALS
+  </h1>
+
+  <p class="hero-subtitle">Where every frame tells your story</p>
+
+  <div class="hero-actions">
+    <a href="#packages" class="btn-primary">View Packages</a>
+    <a href="#contact" class="btn-secondary">Book a Consultation</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-number">500+</span>
+      <span class="hero-stat-label">Events Captured</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-number">5★</span>
+      <span class="hero-stat-label">Client Rating</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-number">3</span>
+      <span class="hero-stat-label">County Coverage</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-number">48h</span>
+      <span class="hero-stat-label">Turnaround</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="services-overview" id="services">
+  <p class="section-eyebrow" style="text-align:center">What We Create</p>
+  <h2 class="section-title" style="text-align:center">Crafted for <em>Every Moment</em></h2>
+  <div class="gold-line" style="margin: 1.5rem auto;"></div>
+  <div class="services-grid">
+    <a href="#packages" class="service-tile" onclick="showTab('weddings')">
+      <span class="service-icon">💍</span>
+      <div class="service-tile-name">Weddings & Engagements</div>
+      <div class="service-tile-desc">Cinematic storytelling for your most intimate moments</div>
+    </a>
+    <a href="#packages" class="service-tile" onclick="showTab('quinceañeras')">
+      <span class="service-icon">👑</span>
+      <div class="service-tile-name">Quinceañeras & Graduations</div>
+      <div class="service-tile-desc">Celebrate every milestone in cinematic style</div>
+    </a>
+    <a href="#packages" class="service-tile" onclick="showTab('branding')">
+      <span class="service-icon">🏢</span>
+      <div class="service-tile-name">Product & Branding</div>
+      <div class="service-tile-desc">Studio-quality visuals that elevate your brand</div>
+    </a>
+    <a href="#packages" class="service-tile" onclick="showTab('realestate')">
+      <span class="service-icon">🏠</span>
+      <div class="service-tile-name">Real Estate</div>
+      <div class="service-tile-desc">Listings that sell — photos, video, and drone</div>
+    </a>
+    <a href="#packages" class="service-tile" onclick="showTab('events')">
+      <span class="service-icon">🎤</span>
+      <div class="service-tile-name">Events & Concerts</div>
+      <div class="service-tile-desc">High-energy coverage of performances & live events</div>
+    </a>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages-section" id="packages">
+  <div class="container">
+    <p class="section-eyebrow">Investment</p>
+    <h2 class="section-title">Choose Your <em>Package</em></h2>
+    <div class="gold-line"></div>
+    <p class="section-desc">Every package is crafted to deliver cinematic quality. Bundle multiple services for a custom quote or retainer options.</p>
+
+    <div class="niche-tabs">
+      <button class="niche-tab active" onclick="showTab('weddings')">💍 Weddings</button>
+      <button class="niche-tab" onclick="showTab('quinceañeras')">👑 Quinceañeras</button>
+      <button class="niche-tab" onclick="showTab('branding')">🏢 Branding</button>
+      <button class="niche-tab" onclick="showTab('realestate')">🏠 Real Estate</button>
+      <button class="niche-tab" onclick="showTab('events')">🎤 Events</button>
+    </div>
+
+    <!-- WEDDINGS -->
+    <div class="niche-panel active" id="panel-weddings">
+      <div class="packages-grid">
+        <div class="package-card">
+          <span class="package-emoji">✨</span>
+          <div class="package-name">Intimate Vows</div>
+          <div class="package-price"><sup>$</sup>1,200</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>4 hours coverage (elopement/small weddings)</li>
+            <li>2–3 min highlight film</li>
+            <li>50 edited photos</li>
+            <li>Drone footage (location-permitting)</li>
+            <li>Online gallery + licensed music</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card featured">
+          <div class="package-badge">Most Popular</div>
+          <span class="package-emoji">💎</span>
+          <div class="package-name">Signature Wedding Film</div>
+          <div class="package-price"><sup>$</sup>2,400</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>8 hours full-day coverage</li>
+            <li>5–7 min cinematic film</li>
+            <li>100+ edited photos</li>
+            <li>Drone + audio storytelling</li>
+            <li>Client discovery call + shot list planning</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card">
+          <span class="package-emoji">💫</span>
+          <div class="package-name">Premium Cinema</div>
+          <div class="package-price"><sup>$</sup>3,600</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>10–12 hours full-day team coverage</li>
+            <li>7–10 min film + 30 sec teaser</li>
+            <li>150+ high-res edits</li>
+            <li>Second shooter + drone</li>
+            <li>Engagement session included</li>
+            <li>Full ceremony & toast edits delivered separately</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUINCEAÑERAS -->
+    <div class="niche-panel" id="panel-quinceañeras">
+      <div class="packages-grid">
+        <div class="package-card">
+          <span class="package-emoji">🎉</span>
+          <div class="package-name">Classic Event Coverage</div>
+          <div class="package-price"><sup>$</sup>850</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>3-hour coverage</li>
+            <li>30 edited images</li>
+            <li>1–2 min recap reel</li>
+            <li>Ceremony + candid moments</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card featured">
+          <div class="package-badge">Recommended</div>
+          <span class="package-emoji">💃</span>
+          <div class="package-name">Cinematic Highlight</div>
+          <div class="package-price"><sup>$</sup>1,300</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>5-hour coverage</li>
+            <li>50+ photos</li>
+            <li>3-min video edit with music sync</li>
+            <li>Grand entrance & toast coverage</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRANDING -->
+    <div class="niche-panel" id="panel-branding">
+      <div class="packages-grid">
+        <div class="package-card">
+          <span class="package-emoji">🛍️</span>
+          <div class="package-name">Product Mini</div>
+          <div class="package-price"><sup>$</sup>400</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>1 hour shoot</li>
+            <li>Up to 10 products (single angles)</li>
+            <li>White/styled background</li>
+            <li>15 high-res edits</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card featured">
+          <div class="package-badge">Best Value</div>
+          <span class="package-emoji">🧠</span>
+          <div class="package-name">Branding Bundle</div>
+          <div class="package-price"><sup>$</sup>800</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>2.5-hour shoot</li>
+            <li>Product + lifestyle scenes</li>
+            <li>Studio or on-location</li>
+            <li>30+ images</li>
+            <li>2 reels for product/demo</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- REAL ESTATE -->
+    <div class="niche-panel" id="panel-realestate">
+      <div class="packages-grid">
+        <div class="package-card">
+          <span class="package-emoji">📸</span>
+          <div class="package-name">Photo Only</div>
+          <div class="package-price"><sup>$</sup>275</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>30 high-quality interior/exterior images</li>
+            <li>Edited for MLS compliance</li>
+            <li>24–48 hour turnaround</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card featured">
+          <div class="package-badge">Most Popular</div>
+          <span class="package-emoji">🎥</span>
+          <div class="package-name">Photo + Video Walkthrough</div>
+          <div class="package-price"><sup>$</sup>500</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>30 photos + 1–2 min video</li>
+            <li>Drone footage included (as allowed)</li>
+            <li>On-brand intro/outro available</li>
+            <li>Delivered within 48 hours</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card">
+          <span class="package-emoji">🏡</span>
+          <div class="package-name">Luxury Listing</div>
+          <div class="package-price"><sup>$</sup>950</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>50+ images, twilight shoot included</li>
+            <li>Video walkthrough (up to 3 min)</li>
+            <li>Agent intro/interview scene</li>
+            <li>Instagram teaser cut</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENTS -->
+    <div class="niche-panel" id="panel-events">
+      <div class="packages-grid">
+        <div class="package-card">
+          <span class="package-emoji">🔊</span>
+          <div class="package-name">Basic Event Recap</div>
+          <div class="package-price"><sup>$</sup>450</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>2-hour coverage</li>
+            <li>25 images</li>
+            <li>1-min vertical reel</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card">
+          <span class="package-emoji">🎬</span>
+          <div class="package-name">Artist Performance</div>
+          <div class="package-price"><sup>$</sup>650</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>Solo artist focus</li>
+            <li>2 camera angles</li>
+            <li>Stage + crowd energy</li>
+            <li>Social cut + teaser included</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+        <div class="package-card featured">
+          <div class="package-badge">Full Coverage</div>
+          <span class="package-emoji">🚨</span>
+          <div class="package-name">Full Event Coverage</div>
+          <div class="package-price"><sup>$</sup>900</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>4–5 hours coverage</li>
+            <li>50+ edits</li>
+            <li>Multi-angle recap (2–3 mins)</li>
+            <li>BTS + crowd highlights</li>
+          </ul>
+          <a href="#contact" class="package-btn">Book This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem; font-size:0.72rem; color:var(--text-muted); line-height:1.7;">
+      * All prices subject to tax. Travel fees apply outside Sonoma, Marin, and Napa Counties. Bundle multiple services for a custom quote or retainer options.
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-eyebrow">Why ARC Vizuals</p>
+      <h2 class="section-title">Art. Rhythm. <em>Cinema.</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">We believe every story deserves to be told with intention. From intimate elopements to high-energy concerts, we bring a cinematic eye and a storyteller's heart to every shoot.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-icon">✦</div>
+          <div>
+            <div class="about-feature-title">Cinematic Quality</div>
+            <div class="about-feature-desc">Professional-grade equipment and editing for every package, regardless of size.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">◈</div>
+          <div>
+            <div class="about-feature-title">Fast Turnaround</div>
+            <div class="about-feature-desc">Real estate delivered in 24–48 hrs. Event galleries within days, not weeks.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">⬡</div>
+          <div>
+            <div class="about-feature-title">Licensed & Insured</div>
+            <div class="about-feature-desc">FAA-licensed drone operation across Sonoma, Marin, and Napa Counties.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">◇</div>
+          <div>
+            <div class="about-feature-title">White-Glove Service</div>
+            <div class="about-feature-desc">Discovery calls, shot list planning, and dedicated client communication throughout.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-main">
+        <div class="film-frame">
+          <div class="film-circle">🎬</div>
+          <p class="film-tagline">"Every frame is a brushstroke in your story's portrait."</p>
+          <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:0.5rem;">— ARC Vizuals</p>
+        </div>
+      </div>
+      <div class="about-visual-decor"></div>
+      <div class="about-visual-decor-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <p class="section-eyebrow">Client Stories</p>
+    <h2 class="section-title">What Our <em>Clients Say</em></h2>
+    <div class="gold-line" style="margin: 1.5rem auto;"></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">ARC Vizuals captured our wedding day beyond anything we could have imagined. The film made us cry the first time we watched it — and every time since. Worth every penny.</p>
+        <div class="testimonial-author">Sofia & Marco R.</div>
+        <div class="testimonial-role">Wedding — Sonoma County</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Our listing sold in 3 days and we truly believe the stunning photos and walkthrough video made the difference. ARC Vizuals is our go-to for every property now.</p>
+        <div class="testimonial-author">Amanda K.</div>
+        <div class="testimonial-role">Real Estate — Napa Valley</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">The product photos elevated our entire brand. We saw a 40% uptick in engagement after updating our site with ARC's images. Incredible eye for detail and storytelling.</p>
+        <div class="testimonial-author">The Bloom Collective</div>
+        <div class="testimonial-role">Branding — Marin County</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE AREA -->
+<section class="coverage">
+  <div class="coverage-inner">
+    <p class="section-eyebrow">Where We Serve</p>
+    <h2 class="section-title">Coverage <em>Area</em></h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+    <div class="counties">
+      <div class="county-tag">Sonoma County</div>
+      <div class="county-tag">Marin County</div>
+      <div class="county-tag">Napa County</div>
+    </div>
+    <p class="travel-note">Based in the heart of Wine Country. We serve Sonoma, Marin, and Napa counties with no travel fees. Destination bookings and extended travel available — contact us for a custom quote.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="section-title">Let's Create <em>Something Beautiful</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">Ready to book or just have questions? Fill out the form and we'll get back to you within 24 hours.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Based In</div>
+            <div class="contact-item-value">Sonoma, Marin & Napa Counties<br>California, USA</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📸</div>
+          <div>
+            <div class="contact-item-label">Specialties</div>
+            <div class="contact-item-value">Weddings · Real Estate · Events<br>Branding · Drone · Concerts</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">⚡</div>
+          <div>
+            <div class="contact-item-label">Response Time</div>
+            <div class="contact-item-value">Within 24 hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" placeholder="Maria">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Garcia">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="maria@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="(707) 555-0100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Interested In</label>
+          <select class="form-select">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Weddings & Engagements</option>
+            <option>Quinceañeras & Graduations</option>
+            <option>Product & Branding Visuals</option>
+            <option>Real Estate Photography/Video</option>
+            <option>Events & Concerts</option>
+            <option>Custom Bundle / Retainer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Event Date (if applicable)</label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell Us About Your Vision</label>
+          <textarea class="form-textarea" placeholder="Share your ideas, venue, special requests..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Send Inquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <h2 class="cta-title">Your Story Deserves<br>to be <em>Cinematic</em></h2>
+  <p class="cta-sub">From intimate elopements to luxury listings — we bring the art of storytelling to every project. Let's create something timeless together.</p>
+  <div class="cta-actions">
+    <a href="#packages" class="btn-primary">Explore Packages</a>
+    <a href="#contact" class="btn-secondary">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ARC VIZUALS</div>
+      <p class="footer-tagline">Cinematic visual storytelling for life's most meaningful moments. Serving Wine Country and beyond.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#packages" onclick="showTab('weddings')">Weddings</a></li>
+        <li><a href="#packages" onclick="showTab('quinceañeras')">Quinceañeras</a></li>
+        <li><a href="#packages" onclick="showTab('branding')">Branding</a></li>
+        <li><a href="#packages" onclick="showTab('realestate')">Real Estate</a></li>
+        <li><a href="#packages" onclick="showTab('events')">Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#packages">Packages & Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Coverage</div>
+      <ul class="footer-links">
+        <li><a href="#coverage">Sonoma County</a></li>
+        <li><a href="#coverage">Marin County</a></li>
+        <li><a href="#coverage">Napa County</a></li>
+        <li><a href="#contact">Destination Bookings</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 ARC Vizuals. All rights reserved. All prices subject to applicable tax.</p>
+    <p class="footer-note">Travel fees apply outside Sonoma, Marin & Napa Counties.</p>
+  </div>
+</footer>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.niche-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.niche-panel').forEach(p => p.classList.remove('active'));
+    const panelMap = {
+      'weddings': 0,
+      'quinceañeras': 1,
+      'branding': 2,
+      'realestate': 3,
+      'events': 4
+    };
+    const tabs = document.querySelectorAll('.niche-tab');
+    const idx = panelMap[name];
+    if (tabs[idx]) tabs[idx].classList.add('active');
+    const panel = document.getElementById('panel-' + name);
+    if (panel) panel.classList.add('active');
+  }
+
+  document.querySelectorAll('.niche-tab').forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      const names = ['weddings', 'quinceañeras', 'branding', 'realestate', 'events'];
+      showTab(names[i]);
+      document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function handleSubmit() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = '✓ Inquiry Sent — We\'ll be in touch!';
+    btn.style.background = '#3A6B35';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.package-card, .testimonial-card, .service-tile, .about-feature').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
